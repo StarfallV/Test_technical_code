@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <input class="mb-2" placeholder="Input Angka" id="inputAngka" />
+    <div class="flex flex-row gap-2">
+        <p><a class="btn btn-default" id="btnSegitiga">Generate Segitiga</a></p>
+        <p><a class="btn btn-default" id="btnGanjil">Generate Bilangan Ganjil</a></p>
+        <p><a class="btn btn-default" id="btnPrima">Generate Bilangan Prima</a></p>
+    </div>
+    <h2>Result: </h2>
+    <div id="result">
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script>
+    $("#btnSegitiga").click(function () {
+        $.ajax({
+            url: "/Home/GenerateSegitiga",
+            data: { input: $("#inputAngka").val() },
+            type: 'GET',
+            success: function (result) {
+                if (result.Success == true) {
+                    var htmlData = '';
+                    result.Data.forEach(async (value) => {
+                        htmlData += '<p>' + value + '</p>'
+                    });
+                    $('#result').html(htmlData)
+                }
+            }
+        })
+    })
+
+    $("#btnGanjil").click(function () {
+        $.ajax({
+            url: "/Home/GenerateGanjil",
+            data: { input: $("#inputAngka").val() },
+            type: 'GET',
+            success: function (result) {
+                if (result.Success == true) {
+                    var htmlData = '';
+                    result.Data.forEach((value) => {
+                        htmlData += '<p>' + value + '</p>'
+                    });
+                    $('#result').html(htmlData)
+                }
+            }
+        })
+    })
+
+    $("#btnPrima").click(function () {
+        $.ajax({
+            url: "/Home/GeneratePrima",
+            data: { input: $("#inputAngka").val() },
+            type: 'GET',
+            success: function (result) {
+                if (result.Success == true) {
+                    var htmlData = '';
+                    result.Data.forEach((value) => {
+                        htmlData += '<p>' + value + '</p>'
+                    });
+                    $('#result').html(htmlData)
+                }
+            }
+        })
+    })
+</script>
+

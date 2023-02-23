@@ -1,0 +1,15 @@
+﻿.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
